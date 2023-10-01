@@ -12,13 +12,12 @@ Before you begin, make sure you have set up Firebase in your project and have th
 
 ### Initialize Firebase Auth
 
-```javascript
+
 import { getAuth } from 'firebase/auth';
 
 const auth = getAuth(app);
-Create a New User with Email and Password
-javascript
-Copy code
+## Create a New User with Email and Password
+
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 // Initialize Firebase Auth
@@ -34,13 +33,12 @@ createUserWithEmailAndPassword(auth, email, password)
   .catch((error) => {
     // Handle errors, e.g., invalid email, weak password, etc.
   });
-Send Email Verification
-javascript
-Copy code
+## Send Email Verification
+
 // Use sendEmailVerification() on the authenticated user
-Sign In with Email and Password
-javascript
-Copy code
+
+## Sign In with Email and Password
+
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 // Initialize Firebase Auth
@@ -56,15 +54,15 @@ signInWithEmailAndPassword(auth, email, password)
   .catch((error) => {
     // Handle errors, e.g., wrong credentials
   });
-Sign Out
-javascript
-Copy code
+  
+## Sign Out
+
 import { signOut } from 'firebase/auth';
 
 signOut(auth);
-Listen for Authentication State Changes
-javascript
-Copy code
+
+## Listen for Authentication State Changes
+
 import { onAuthStateChanged } from 'firebase/auth';
 
 onAuthStateChanged(auth, (user) => {
@@ -77,9 +75,9 @@ onAuthStateChanged(auth, (user) => {
     // ...
   }
 });
-Google Sign-In with Popup
-javascript
-Copy code
+
+## Google Sign-In with Popup
+
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const provider = new GoogleAuthProvider();
@@ -91,9 +89,9 @@ signInWithPopup(auth, provider)
   .catch((error) => {
     // Handle errors
   });
-Update User Profile
-javascript
-Copy code
+
+## Update User Profile
+
 import { updateProfile } from 'firebase/auth';
 
 // Update the user's display name and photo URL
@@ -107,27 +105,26 @@ updateProfile(auth.currentUser, {
   .catch((error) => {
     // Handle errors
   });
-Get Current User's UID
-javascript
-Copy code
+
+## Get Current User's UID
+
 const user = auth.currentUser;
 const uid = user.uid;
 Firestore Operations
-Initialize Firestore
-javascript
-Copy code
+
+## Initialize Firestore
+
 import { getFirestore } from 'firebase/firestore';
 
 const db = getFirestore(app);
-Create a Firestore Collection Reference
-javascript
-Copy code
-import { collection } from 'firebase/firestore';
 
+## Create a Firestore Collection Reference
+
+import { collection } from 'firebase/firestore';
 const coll = collection(db, 'collection-name');
-Add a Document to a Collection
-javascript
-Copy code
+
+## Add a Document to a Collection
+
 import { addDoc } from 'firebase/firestore';
 
 await addDoc(coll, {
@@ -135,9 +132,8 @@ await addDoc(coll, {
   field2: 'Value2',
   // ...
 });
-Create or Update a Document in Firestore
-javascript
-Copy code
+
+## Create or Update a Document in Firestore
 import { doc, setDoc } from 'firebase/firestore';
 
 const docRef = doc(db, 'collection-name', 'document-name');
@@ -147,36 +143,33 @@ await setDoc(docRef, {
   field2: 'Value2',
   // ...
 });
-Server Timestamp
-javascript
-Copy code
+
+## Server Timestamp
+
 import { serverTimestamp } from 'firebase/firestore';
-
 const createdAt = serverTimestamp();
-Retrieve Data from Firestore
-javascript
-Copy code
+
+## Retrieve Data from Firestore
+
 import { getDocs } from 'firebase/firestore';
-
 const querySnapshot = await getDocs(coll);
-
 querySnapshot.forEach((doc) => {
   console.log(doc.id, " => ", doc.data());
 });
-Real-time Data Updates with Firestore
-javascript
-Copy code
+
+## Real-time Data Updates with Firestore
+
 import { onSnapshot } from 'firebase/firestore';
 
 onSnapshot(coll, (querySnapshot) => {
   // Handle real-time updates
 });
-Firestore Security Rules
-Here are some example Firestore security rules:
 
-Allow read and write access only to authenticated users:
-javascript
-Copy code
+# Firestore Security Rules
+## Here are some example Firestore security rules:
+
+## Allow read and write access only to authenticated users:
+
 rules_version = '2';
 
 service cloud.firestore {
@@ -186,9 +179,9 @@ service cloud.firestore {
     }
   }
 }
-Allow read access based on the user's UID:
-javascript
-Copy code
+
+## Allow read access based on the user's UID:
+
 rules_version = '2';
 
 service cloud.firestore {
@@ -199,9 +192,9 @@ service cloud.firestore {
     }
   }
 }
-Allow read, update, and create access for documents owned by the user:
-javascript
-Copy code
+
+## Allow read, update, and create access for documents owned by the user:
+
 rules_version = '2';
 
 service cloud.firestore {
@@ -221,9 +214,9 @@ service cloud.firestore {
     }
   }
 }
-Allow read, update, create, and delete access for documents owned by the user:
-javascript
-Copy code
+
+## Allow read, update, create, and delete access for documents owned by the user:
+
 rules_version = '2';
 
 service cloud.firestore {
@@ -244,22 +237,22 @@ service cloud.firestore {
     }
   }
 }
-Firestore Queries
-Basic Query with Where Clause
-javascript
-Copy code
+
+# Firestore Queries
+## Basic Query with Where Clause
+
 import { query, where } from 'firebase/firestore';
 
 const q = query(coll, where("uid", "==", user.uid));
-Order Documents by a Field
-javascript
-Copy code
+
+## Order Documents by a Field
+
 import { query, where, orderBy } from 'firebase/firestore';
 
 const q = query(postsRef, where("uid", "==", user.uid), orderBy("createdAt", "desc"));
-Update a Document
-javascript
-Copy code
+
+## Update a Document
+
 import { updateDoc } from 'firebase/firestore';
 
 async function updateDocumentInFirestore(docId, newData) {
@@ -267,11 +260,13 @@ async function updateDocumentInFirestore(docId, newData) {
 
   await updateDoc(postRef, newData);
 }
-Delete a Document
-javascript
-Copy code
+
+## Delete a Document
+
 import { deleteDoc } from 'firebase/firestore';
 
 async function deleteDocumentInFirestore(docId) {
   await deleteDoc(doc(db, collectionName, docId));
 }
+
+# All the Best  🤝
