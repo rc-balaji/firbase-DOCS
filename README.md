@@ -11,11 +11,10 @@ Before you begin, make sure you have set up Firebase in your project and have th
 ## Authentication Operations
 
 ### Initialize Firebase Auth
-
-
+```javascript
 import { getAuth } from 'firebase/auth';
 
-const auth = getAuth(app);
+const auth = getAuth(app);```
 ## Create a New User with Email and Password
 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
