@@ -15,7 +15,9 @@ Before you begin, make sure you have set up Firebase in your project and have th
 import { getAuth } from 'firebase/auth';
 
 const auth = getAuth(app);```javascript
+```
 ## Create a New User with Email and Password
+```
 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
@@ -32,11 +34,15 @@ createUserWithEmailAndPassword(auth, email, password)
   .catch((error) => {
     // Handle errors, e.g., invalid email, weak password, etc.
   });
+```
 ## Send Email Verification
+```
 
 // Use sendEmailVerification() on the authenticated user
 
+```
 ## Sign In with Email and Password
+```
 
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
@@ -54,13 +60,16 @@ signInWithEmailAndPassword(auth, email, password)
     // Handle errors, e.g., wrong credentials
   });
   
+```
 ## Sign Out
-
+```
 import { signOut } from 'firebase/auth';
 
 signOut(auth);
 
+```
 ## Listen for Authentication State Changes
+```
 
 import { onAuthStateChanged } from 'firebase/auth';
 
@@ -75,7 +84,9 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
+```
 ## Google Sign-In with Popup
+```
 
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
@@ -89,7 +100,9 @@ signInWithPopup(auth, provider)
     // Handle errors
   });
 
+```
 ## Update User Profile
+```
 
 import { updateProfile } from 'firebase/auth';
 
@@ -105,24 +118,32 @@ updateProfile(auth.currentUser, {
     // Handle errors
   });
 
+```
 ## Get Current User's UID
 
+```
 const user = auth.currentUser;
 const uid = user.uid;
 Firestore Operations
 
+```
 ## Initialize Firestore
+```
 
 import { getFirestore } from 'firebase/firestore';
 
 const db = getFirestore(app);
 
+```
 ## Create a Firestore Collection Reference
-
+```
 import { collection } from 'firebase/firestore';
 const coll = collection(db, 'collection-name');
 
+```
+
 ## Add a Document to a Collection
+```
 
 import { addDoc } from 'firebase/firestore';
 
@@ -132,7 +153,9 @@ await addDoc(coll, {
   // ...
 });
 
+```
 ## Create or Update a Document in Firestore
+```
 import { doc, setDoc } from 'firebase/firestore';
 
 const docRef = doc(db, 'collection-name', 'document-name');
@@ -143,18 +166,23 @@ await setDoc(docRef, {
   // ...
 });
 
+```
 ## Server Timestamp
+```
 
 import { serverTimestamp } from 'firebase/firestore';
 const createdAt = serverTimestamp();
 
+```
 ## Retrieve Data from Firestore
+```
 
 import { getDocs } from 'firebase/firestore';
 const querySnapshot = await getDocs(coll);
 querySnapshot.forEach((doc) => {
   console.log(doc.id, " => ", doc.data());
 });
+```
 
 ## Real-time Data Updates with Firestore
 
