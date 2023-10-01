@@ -8,9 +8,9 @@ Before you begin, make sure you have set up Firebase in your project and have th
 
 ---
 
-### Authentication Operations
+## Authentication Operations
 
-#### Initialize Firebase Auth
+### Initialize Firebase Auth
 
 ```javascript
 import { getAuth } from 'firebase/auth';
